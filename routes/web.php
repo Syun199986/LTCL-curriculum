@@ -15,7 +15,8 @@ use App\Http\Controllers\PostController;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('posts/index');
+//     // viewヘルパ → controllerやweb.phpからviewフォルダー内のファイルを表示したい時に使用
 // });
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index']);
