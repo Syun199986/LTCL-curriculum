@@ -20,10 +20,17 @@ use App\Http\Controllers\PostController;
 // });
 
 Route::get('/', [PostController::class, 'index']);
+
+// 新規投稿と保存
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
 
 // '/posts/{対象データのID}'にGetリクエストが来た時、PostControllerのshowメソッドを実行
 Route::get('/posts/{post}', [PostController::class, 'show']);
+
+// 編集と更新
 Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 Route::put('/posts/{post}', [PostController::class, 'update']);
+
+// 削除
+Route::delete('/posts/{post}', [PostController::class, 'delete']);
