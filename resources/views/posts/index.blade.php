@@ -6,11 +6,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <a href='/dashboard'>ダッシュボードへ</a>
+    <br>
+    <h4>ログインユーザー：{{ Auth::user()->name }}</h4>
     <body>
     	<h1>Blog Name</h1>
     	<a href='/posts/create'>create</a>
     	<div class='posts'>
-    		@foreach ($posts as $post)
+    		@foreach($posts as $post)
     			<div class='post'>
     				<h2 class='title'>
     					<a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
