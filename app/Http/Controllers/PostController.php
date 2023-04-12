@@ -9,6 +9,7 @@ use App\Models\Category;
 
 class PostController extends Controller
 {
+    // 通常blog表示用index
     public function index(Post $post)
     {
         // SQL文確認用
@@ -22,6 +23,45 @@ class PostController extends Controller
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
     }
     
+    // 以下、webAPI表示用index
+    
+    // public function index(Post $post)
+    // {
+    //             // クライアントインスタンス生成
+    //     $client = new \GuzzleHttp\Client();
+
+    //     // GET通信するURL
+    //     $url = 'https://teratail.com/api/v1/questions';
+
+    //     // リクエスト送信と返却データの取得
+    //     // Bearerトークンにアクセストークンを指定して認証を行う
+    //     $response = $client->request(
+    //         'GET',
+    //         $url,
+    //         ['Bearer' => config('services.teratail.token')]
+    //     );
+        
+    //     // API通信で取得したデータはjson形式なので
+    //     // PHPファイルに対応した連想配列にデコードする
+    //     $questions = json_decode($response->getBody(), true);
+        
+    //     // index bladeに取得したデータを渡す
+    //     return view('posts/index')->with([
+    //         'posts' => $post->getPaginateByLimit(),
+    //         'questions' => $questions['questions'],
+    //     ]);
+    // }
+    
+    //以下、index.blade.php等にテスト追加用html(投稿のforeach表示部分に追加)
+    
+    // <!--@foreach($questions as $question)-->
+    // <!--	<div>-->
+    // <!--		<a href="https://teratail.com/questions/{{ $question['id'] }}">-->
+    // <!--			{{ $question['title'] }}-->
+    // <!--		</a>-->
+    // <!--	</div>-->
+    // <!--@endforeach-->
+
     public function show(Post $post)
     {
         // dd($post);
